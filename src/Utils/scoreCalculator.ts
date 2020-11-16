@@ -1,12 +1,10 @@
+import { ace_upper, blackjack_value, ace_lower, kqj_value } from "../Constants";
+
 export const scoreCalculator =(deck:any)=>{
 
     let total=0;
     deck.forEach((card:any) => {
         const point= determiner(total, card[0])
-        if(card[0].value=== "A"){
-            console.log("value for ace is ",point)
-        }
-
         total= total + point
     });
     return total;
@@ -32,15 +30,15 @@ export const determiner=(total:number, card:any)=>{
 
         if(typeof card.value === 'string'){
             if(card.value==="A"){
-                if((total + 11) >21){
-                    return 1
+                if(total + ace_upper > blackjack_value){
+                    return ace_lower
                 }
                 else{
-                    return 11
+                    return ace_upper
                 }
             }
             else{
-                return 10
+                return kqj_value
             }
         }
         

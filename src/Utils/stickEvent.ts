@@ -1,5 +1,5 @@
-import { randomCardGenerator } from './randomCard';
-import { scoreCalculator } from './scoreCalculator';
+import { randomNumberGenerator } from './randomCard';
+import { determiner } from './scoreCalculator';
 
 export const stickEvent=(deck:any, playerScore:number, dealerScore:number)=>{
     const cards:IcardDeck = {
@@ -9,19 +9,20 @@ export const stickEvent=(deck:any, playerScore:number, dealerScore:number)=>{
 
     let score = dealerScore
     while(score<17 && score<= playerScore){
-        const randomCard = randomCardGenerator(1, deck)
-        const cardScore = scoreCalculator(randomCard.deck)
-        score= score+ cardScore
-        console.log("after stick card score - ",score)
-        cards.deck.push(randomCard.deck[0])
+        // const randomCard = randomCardGenerator(1, deck)
+        // const cardScore = scoreCalculator(randomCard.deck)
+        // score= score+ cardScore
+        // console.log("after stick card score - ",score)
+        // cards.deck.push(randomCard.deck[0])
 
-        // const randomIndex = randomNumberGenerator(deck.length)
-        // const randomCard = deck.splice(randomIndex, 1)
-        // const cardScore = determiner(score, randomCard)
-        // score = score + cardScore
+        const randomIndex = randomNumberGenerator(deck.length)
+        const randomCard = deck.splice(randomIndex, 1)
+        const cardScore = determiner(score, randomCard[0])
+        score = score + cardScore
 
-        // console.log(score)
-        // cards.deck.push(randomCard)
+        // console.log(randomCard[0])
+        // console.log(deck)
+        cards.deck.push(randomCard)
     }
     cards.remaining = deck
     return cards

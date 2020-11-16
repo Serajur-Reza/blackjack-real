@@ -49,12 +49,13 @@ const Stick: React.FC<IButton> = ({disabled}) => {
     }
 
     const stickHandler=()=>{
-        if(blackJack && playersCard.length <3){
-            blackJackAction()
-        }
-        else{
-            stickAction()
-        }
+        // if(blackJack && playersCard.length <3){
+        //     blackJackAction()
+        // }
+        // else{
+        //     stickAction()
+        // }
+        stickAction()
     }
     return (
         <div>
